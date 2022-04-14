@@ -18,11 +18,14 @@ import java.util.Optional;
 public class ProduseService {
 
     private final ProduseRepository produseRepository;
-    private final ProduseListDto produseListDto;
+    private final Optional<ProduseListDto> produseListDto;
 
     @PostConstruct
     private void getlist(){
-        produseListDto.getStoc().forEach(System.out::println);
+        if (produseListDto.isPresent())
+            produseListDto.get().getStoc().forEach(System.out::println);
+        else
+            System.out.println("not prezent");
     }
 
 
