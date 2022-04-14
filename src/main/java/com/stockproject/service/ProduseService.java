@@ -23,7 +23,11 @@ public class ProduseService {
     @PostConstruct
     private void getlist(){
 
-            produseListDto.getStoc().forEach(System.out::println);
+            produseListDto.getStoc().forEach(produs ->{
+                Produse prodToSave = findById(produs.getId()).get();
+                prodToSave.setStoc(produs.getStoc());
+                produseRepository.save(prodToSave);
+            });
 
     }
 
