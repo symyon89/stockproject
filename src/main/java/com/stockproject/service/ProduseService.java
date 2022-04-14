@@ -23,7 +23,7 @@ public class ProduseService {
     @PostConstruct
     private void getlist(){
 
-            produseListDto.get().getStoc().forEach(System.out::println);
+            produseListDto.getStoc().forEach(System.out::println);
 
     }
 
