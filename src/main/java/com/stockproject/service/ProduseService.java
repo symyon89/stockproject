@@ -22,10 +22,9 @@ public class ProduseService {
 
     @PostConstruct
     private void getlist(){
-        if (produseListDto.isPresent())
+
             produseListDto.get().getStoc().forEach(System.out::println);
-        else
-            System.out.println("not prezent");
+
     }
 
 
