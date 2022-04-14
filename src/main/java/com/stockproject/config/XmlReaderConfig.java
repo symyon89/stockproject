@@ -21,13 +21,13 @@ public class XmlReaderConfig {
         public Optional<ProduseListDto> unmarshall() throws JAXBException, IOException {
             JAXBContext context = JAXBContext.newInstance(ProduseListDto.class);
         FileReader file = new FileReader("src/main/resources/STOCURI_NOI/stocuri_noi.xml");
-
+        Optional<ProduseListDto> list = Optional.of((ProduseListDto) context.createUnmarshaller()
+                .unmarshal(file));
         Files.createDirectories(Paths.get("src/main/resources/STOCURI_PROCESATE"));
 
         Files.move(Paths.get("src/main/resources/STOCURI_NOI/stocuri_noi.xml"),
                 Paths.get("src/main/resources/STOCURI_PROCESATE/stocuri_noi.xml"), StandardCopyOption.REPLACE_EXISTING);
 
-        return Optional.of((ProduseListDto) context.createUnmarshaller()
-                .unmarshal(file));
+        return list;
     }
 }
