@@ -26,7 +26,7 @@ public class XmlReaderConfig {
         Files.createDirectories(Paths.get("src/main/resources/STOCURI_PROCESATE"));
 
         Files.move(Paths.get("src/main/resources/STOCURI_NOI/stocuri_noi.xml"),
-                Paths.get("src/main/resources/STOCURI_PROCESATE/stocuri_noi.xml"), StandardCopyOption.REPLACE_EXISTING);
+                Paths.get("src/main/resources/STOCURI_PROCESATE/stocuri_procesate.xml"), StandardCopyOption.REPLACE_EXISTING);
 
         return list;
     }
