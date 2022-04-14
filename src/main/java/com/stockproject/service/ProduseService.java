@@ -18,7 +18,7 @@ import java.util.Optional;
 public class ProduseService {
 
     private final ProduseRepository produseRepository;
-    private final Optional<ProduseListDto> produseListDto;
+    private final ProduseListDto produseListDto;
 
     @PostConstruct
     private void getlist(){
