@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 
 @Configuration
 public class XmlReaderConfig {
     @Bean
-        public ProduseListDto unmarshall() throws JAXBException, IOException {
+        public Optional<ProduseListDto> unmarshall() throws JAXBException, IOException {
             JAXBContext context = JAXBContext.newInstance(ProduseListDto.class);
         FileReader file = new FileReader("src/main/resources/STOCURI_NOI/stocuri_noi.xml");
 
@@ -26,7 +27,7 @@ public class XmlReaderConfig {
         Files.move(Paths.get("src/main/resources/STOCURI_NOI/stocuri_noi.xml"),
                 Paths.get("src/main/resources/STOCURI_PROCESATE/stocuri_noi.xml"), StandardCopyOption.REPLACE_EXISTING);
 
-        return (ProduseListDto) context.createUnmarshaller()
-                .unmarshal(file);
+        return Optional.of((ProduseListDto) context.createUnmarshaller()
+                .unmarshal(file));
     }
 }
