@@ -30,7 +30,7 @@ public class ComenziService {
                 .build();
     }
 
-    private Comenzi buildComenzi(Optional<Produse> produse, ComenziDto comenziDto) {
+    public Comenzi buildComenzi(Optional<Produse> produse, ComenziDto comenziDto) {
         return produse.isPresent() ?
                 Comenzi.builder()
                         .numeClient(comenziDto.getNumeClient())
