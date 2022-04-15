@@ -24,9 +24,13 @@ public class ProduseService {
     private void getlist(){
 
             produseListDto.getStoc().forEach(produs ->{
-                Produse prodToSave = findById(produs.getId()).get();
-                prodToSave.setStoc(produs.getStoc());
-                produseRepository.save(prodToSave);
+                var prodToSave = findById(produs.getId());
+                if(prodToSave.isPresent()) {
+                    prodToSave.get().setStoc(produs.getStoc());
+                    produseRepository.save(prodToSave.get());
+                }else {
+                    log.error("Product with id " + produs.getId() + " does not exists, update failed");
+                }
             });
 
     }
