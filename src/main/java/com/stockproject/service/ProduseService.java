@@ -33,7 +33,6 @@ public class ProduseService {
 
 
     public Optional<Produse> updateStock(Integer id,Integer quantity){
-
         var produse = this.findById(id);
         if (produse.isPresent() && this.checkIfIsStock(produse.get().getStoc(),quantity)){
             var newStoc = produse.get().getStoc() - quantity;
