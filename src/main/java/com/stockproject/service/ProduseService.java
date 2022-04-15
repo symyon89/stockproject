@@ -34,11 +34,11 @@ public class ProduseService {
 
     public Optional<Produse> updateStock(Integer id,Integer quantity){
 
-        Optional<Produse> produse = this.findById(id);
+        var produse = this.findById(id);
         if (produse.isPresent() && this.checkIfIsStock(produse.get().getStoc(),quantity)){
-            int q = produse.get().getStoc() - quantity;
+            var newStoc = produse.get().getStoc() - quantity;
             log.info("Update stock with value " + (produse.get().getStoc()- quantity));
-            produse.get().setStoc(q);
+            produse.get().setStoc(newStoc);
             return produse;
         }else{
             return Optional.empty();

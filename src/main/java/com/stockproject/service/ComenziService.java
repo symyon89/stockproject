@@ -22,9 +22,8 @@ public class ComenziService {
 
 
     public ComenziResponseDto processOrder(ComenziDto comenziDto) {
-        Optional<Produse> produse = produseService.updateStock(comenziDto.getIdProdus(),comenziDto.getCantitate());
-        Comenzi comenzi =  this.buildComenzi(produse,comenziDto);
-        comenzi = comenziRepository.save(comenzi);
+        var produse = produseService.updateStock(comenziDto.getIdProdus(),comenziDto.getCantitate());
+        var comenzi = comenziRepository.save(this.buildComenzi(produse,comenziDto));
         return ComenziResponseDto.builder()
                 .idComanda(comenzi.getId())
                 .statusComanda(comenzi.getStatusComanda())
