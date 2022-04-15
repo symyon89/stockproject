@@ -22,8 +22,8 @@ public class ComenziService {
 
 
     public ComenziResponseDto processOrder(ComenziDto comenziDto) {
-        var produse = produseService.updateStock(comenziDto.getIdProdus(),comenziDto.getCantitate());
-        var comenzi = comenziRepository.save(this.buildComenzi(produse,comenziDto));
+        var produse = produseService.updateStock(comenziDto.getIdProdus(), comenziDto.getCantitate());
+        var comenzi = comenziRepository.save(this.buildComenzi(produse, comenziDto));
         return ComenziResponseDto.builder()
                 .idComanda(comenzi.getId())
                 .statusComanda(comenzi.getStatusComanda())
@@ -32,16 +32,15 @@ public class ComenziService {
 
     private Comenzi buildComenzi(Optional<Produse> produse, ComenziDto comenziDto) {
         return produse.isPresent() ?
-             Comenzi.builder()
-                    .numeClient(comenziDto.getNumeClient())
-                    .produse(produse.get())
-                    .statusComanda(StatusComanda.ACCEPTAT).build()
-             : Comenzi.builder()
-                    .numeClient(comenziDto.getNumeClient())
-                    .produse(null)
-                    .statusComanda(StatusComanda.STOC_INSUFICIENT).build();
-        }
-
+                Comenzi.builder()
+                        .numeClient(comenziDto.getNumeClient())
+                        .produse(produse.get())
+                        .statusComanda(StatusComanda.ACCEPTAT).build()
+                : Comenzi.builder()
+                .numeClient(comenziDto.getNumeClient())
+                .produse(null)
+                .statusComanda(StatusComanda.STOC_INSUFICIENT).build();
+    }
 
 
 }

@@ -3,8 +3,6 @@ package com.stockproject.controller;
 
 import com.stockproject.dto.ComenziDto;
 import com.stockproject.service.ComenziService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.DirectExchange;
@@ -24,11 +22,10 @@ public class ComenziController {
     private final DirectExchange exchange;
 
     @RabbitListener(queues = "COMENZI")
-    public void messageListener(ComenziDto comenziDto){
-    log.info("Order recived : " + comenziDto);
-        rabbitTemplate.convertAndSend(exchange.getName(),REZULTATE_COMENZI, comenziService.processOrder(comenziDto));
+    public void messageListener(ComenziDto comenziDto) {
+        log.info("Order recived : " + comenziDto);
+        rabbitTemplate.convertAndSend(exchange.getName(), REZULTATE_COMENZI, comenziService.processOrder(comenziDto));
     }
-
 
 
 }

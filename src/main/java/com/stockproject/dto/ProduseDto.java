@@ -11,9 +11,11 @@ import java.io.Serializable;
 
 @Data
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name="Stoc")
+@XmlRootElement(name = "Stoc")
 public class ProduseDto implements Serializable {
-    @XmlElement(name="id_produs")
+
+    @XmlElement(name = "id_produs")
     private Integer id;
+
     private Integer stoc;
 }

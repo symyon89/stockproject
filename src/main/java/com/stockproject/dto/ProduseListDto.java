@@ -13,6 +13,8 @@ import java.util.List;
 @XmlRootElement(name = "Stocuri")
 @Data
 public class ProduseListDto {
+
     @XmlElement(name = "Stoc", type = ProduseDto.class)
     private List<ProduseDto> stoc = new ArrayList<>();
+
 }

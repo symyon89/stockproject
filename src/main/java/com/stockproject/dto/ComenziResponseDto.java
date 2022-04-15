@@ -8,8 +8,10 @@ import lombok.Data;
 @Data
 @Builder
 public class ComenziResponseDto {
+
     @JsonProperty("id_comanda")
     private Integer idComanda;
+
     @JsonProperty("status_comanda")
     private StatusComanda statusComanda;
 }
